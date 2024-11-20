@@ -8,7 +8,7 @@
 <body>
       <h1>Data Siswa</h1>
       <a href="{{ route('admin/dashboard') }}">Menu Utama</a><br>
-      <a href="{{ route('logout) }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+      <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
       <br><br>
       <form id="logout-form" action="{{ route('logout') }}" method="post">
             @csrf 
@@ -20,7 +20,7 @@
            <input type="submit" value="Cari">
       </form>
       <br><br>
-      <a href="{{ route(siswa.create) }}">Tambah Siswa</a>
+      <a href="{{ route('siswa.create') }}">Tambah Siswa</a>
 
       @if(Session::has('success'))
       <div class="alert alert-success" role="alert">
@@ -56,7 +56,7 @@
                   @endif
 
                   <td>
-                        <form onsubmit="return confirm('Apakah Anda Yakin?');" action="{{ route('siswa.destroy', $siswa->id) }}" method="post">
+                        <form onsubmit="return confirm('Apakah Anda Yakin?');" action="{{ route('siswa.destroy', $siswa->id) }}" method="POST">
                               <a href="{{ route('siswa.show', $siswa->id) }}" class="btn btn-sm btn-dark">SHOW</a>
                               <a href="{{ route('siswa.edit', $siswa->id) }}" class="btn btn-sm btn-primary">EDIT</a>
                               @csrf 

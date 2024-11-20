@@ -5,7 +5,7 @@
 <h1>Login</h1>
 <a href="{{ route('register') }}">Daftar</a>
 <br><br>
-<form action="{{ route('register') }}" metthod="post">
+<form action="{{ route('authenticate') }}" metthod="post">
       @csrf
       <label>Email Addres</label><br>
       <input type="email" id="email" name="email" value="{{ old('email') }}"><br><br>

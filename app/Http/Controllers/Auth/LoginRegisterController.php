@@ -35,7 +35,7 @@ $request->session()->regenerate();
 if($request->user()->usertype == 'admin') {
     return redirect('admin/dashboard')->withSuccess('You have successfully registered & logged in!');
   }
-    return redirect()->intended(route('dashboard'));
+    return redirect()->intended(route('-dashboard'));
 }
 
 public function login() {
@@ -65,6 +65,6 @@ public function logout(Request $request) {
     Auth::logout();
     $request->session()->invalidate();
     $request->session()->regenerateToken();
-    return redirect()->route('login')->withSuccess('You have logged out successfully');;
+    return redirect()->route('login')->withSuccess('You have logged out successfully');
 }
 }
