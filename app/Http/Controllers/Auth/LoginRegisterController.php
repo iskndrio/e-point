@@ -35,7 +35,7 @@ $request->session()->regenerate();
 if($request->user()->usertype == 'admin') {
     return redirect('admin/dashboard')->withSuccess('You have successfully registered & logged in!');
   }
-    return redirect()->intended(route('-dashboard'));
+    return redirect()->intended(route('dashboard'));
 }
 
 public function login() {
