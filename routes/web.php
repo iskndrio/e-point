@@ -20,4 +20,4 @@ Route::middleware('auth', 'admin')->group(function () {
     Route::get('admin/dashoard', [AdminController::class, 'index'])->name('admin/dashboard');
     Route::resource('/admin/siswa', SiswaController::class);
     Route::post('/logout', [LoginRegisterController::class, 'logout'])->name('logout');
-});
+}); --
