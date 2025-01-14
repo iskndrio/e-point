@@ -8,7 +8,7 @@
     <div class="text-center align-center">
     @csrf
     <label>Nama Lengkap</label><br>
-    <input type="text" id="name" name="ngaran" value="{{ old('name') }}" class="form-control" style="width: 40%"><br>
+    <input type="text" id="name" name="name" value="{{ old('name') }}" class="form-control" style="width: 40%"><br>
     
     @if ($errors->has('name'))
     <span class="text-danger">{{ $errors->first('name') }}</span>

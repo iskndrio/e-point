@@ -28,7 +28,7 @@
       </div>
       @endif
 
-      <table class="tabel">
+      <table class="tabel" border="1">
             <tr>
                   <th>Foto</th>
                   <th>NIS</th>
