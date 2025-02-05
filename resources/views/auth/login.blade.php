@@ -4,7 +4,6 @@
 @section('content')
 
 <h1>Login</h1>
-<a href="{{ route('register') }}">Daftar</a>
 <br><br>
 <form action="{{ route('authenticate') }}" metthod="post">
       @csrf

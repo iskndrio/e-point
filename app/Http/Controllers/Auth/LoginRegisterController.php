@@ -10,6 +10,18 @@ use Illuminate\Support\Facades\Hash;
 
 
 class LoginRegisterController extends Controller {
+
+    public function index() {
+
+        // get data
+        $users = User::latest()->paginate(10);
+
+        return view('admin.akun.index', compact('users'));
+    }
+
+    public function create() {
+        return view('admin.akun.create');
+    }
     public function register(){
         return view('auth.register');
     }
@@ -18,26 +30,19 @@ class LoginRegisterController extends Controller {
         $request->validate([
             'name' => 'required|string|max:250',
             'email' => 'required|email|max:250|unique:users',
-            'password' => 'required|min:8|confirmed'
+            'password' => 'required|min:8|confirmed',
+            'usertype' => 'required'
         ]);
         
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'usertype' => 'admin'
+            'usertype' => $request->usertype
         ]);
 
-$credentials = $request->only('email', 'password');
-Auth::attempt($credentials);
-$request->session()->regenerate();
-
-if($request->user()->usertype == 'admin') {
-    return redirect('admin/dashboard')->withSuccess('You have successfully registered & logged in!');
-  }
-    return redirect()->intended(route('dashboard'));
-}
-
+        return redirect()->route('akun.index')->with(['success' => 'Data Berhasil Disimpan']);
+    }
 public function login() {
     return view('auth.login');
 }
