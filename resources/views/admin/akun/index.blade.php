@@ -25,7 +25,7 @@
 
       @if(Session::has('success'))
       <div class="alert alert-success" role="alert">
-            {{ Session::get('success')}}
+            {{ Session::get('success') }}
       </div>
       @endif
 
@@ -41,9 +41,24 @@
                   <td>{{ $user->name }}</td>
                   <td>{{ $user->email }}</td>
                   <td>{{ $user->usertype }}</td>
+                  @if ($user->usertype == 'admin'):
+                        <td>
+                              <a href="{{ route('akun.edit', $user->id) }}" class="btn btn-sm btn-primary">EDIT</a>
+                        </td>
+                  @else
                   <td>
-                       <a href="{{ 'akun.edit', $user->id }}" class="btn btn-sm btn-primary">EDIT</a>
+                        @if($user->usertype == 'siswa')
+                        <form onsubmit="return confirm('Jika Akun Siswa Dihapus Maka Data Siswa Akan Ikut Terhapus, Apakah Anda Yakin ?');" action="{{ route('akun.destroy', $user->id)}}" method="POST">
+                              @else 
+                              <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('akun.destroy', $user->id)}}" method="POST">
+                                    @endif 
+                                    <a href="{{ route('akun.edit', $user->id) }}" class="btn btn-sm btn-primary">EDIT</a>
+                                    @csrf 
+                                    @method('DELETE')
+                                    <button type="submit">HAPUS</button>
+                        </form>
                   </td>
+                  @endif
             </tr>
             @empty
             <tr>

@@ -14,8 +14,8 @@
     @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
-            @foreach ($errors->all() as $errors)
-            <li>{{ $errors }}</li>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
             @endforeach
         </ul>
     </div>
@@ -36,7 +36,7 @@
     <input type="password" name="password" id="password"><br>
 
     <br>
-    <label for="password_confirmation" class="col-md-label text-md-end text-start">Confirm Password</label>
+    <label for="password_confirmation" class="col-md-4 col-form-label text-md-end text-start">Confirm Password</label>
     <div class="col-md-6">
         <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
     </div>

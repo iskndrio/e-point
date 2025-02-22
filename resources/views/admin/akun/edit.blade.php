@@ -26,13 +26,13 @@
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
-            <li>{{ $errors }}</li>
+            <li>{{ $error }}</li>
             @endforeach
         </ul>
     </div>
     @endif
 
-    @if(session::has('success'))
+    @if(Session::has('success'))
     <div class="alert alert-success" role="alert">
         {{ Session::get('success') }}
     </div>
