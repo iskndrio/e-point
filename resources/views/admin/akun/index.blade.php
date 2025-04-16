@@ -30,7 +30,7 @@
       @endif
 
       <table class="tabel" border="1">
-            <tr>
+            <tr>  
                   <th>Nama</th>
                   <th>Email</th>
                   <th>Role</th>
